@@ -6,6 +6,10 @@ FROM node:${NODE_VERSION}-slim AS build
 # Set the working directory inside the container
 WORKDIR /app
 
+ARG NUXT_PUBLIC_GOOGLE_CLIENT_ID
+
+ENV NUXT_PUBLIC_GOOGLE_CLIENT_ID=$NUXT_PUBLIC_GOOGLE_CLIENT_ID
+
 # Copy package.json and pnpm-lock.yaml files to the working directory
 COPY ./package.json /app/
 

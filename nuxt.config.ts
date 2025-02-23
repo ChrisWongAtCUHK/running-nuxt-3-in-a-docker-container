@@ -6,6 +6,6 @@ export default defineNuxtConfig({
     'nuxt-vue3-google-signin'
   ],
   googleSignIn: {
-    clientId: 'NUXT_PUBLIC_GOOGLE_CLIENT_ID',
+    clientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
   }
 })

@@ -1,6 +1,7 @@
 version: '1'
 services:
-  web:
-    build: .
+  my-nuxt-app:
+    image: my-nuxt-app:latest
+    container_name: my-nuxt-app
     ports:
       - "3000:3000"
