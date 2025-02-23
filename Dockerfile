@@ -3,26 +3,18 @@ ARG NODE_VERSION=20.14.0
 # Create build stage
 FROM node:${NODE_VERSION}-slim AS build
 
-# Enable pnpm
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml files to the working directory
 COPY ./package.json /app/
-COPY ./pnpm-lock.yaml /app/
-
-## Install dependencies
-RUN pnpm install --shamefully-hoist
 
 # Copy the rest of the application files to the working directory
 COPY . ./
 
+RUN npm install
 # Build the application
-RUN pnpm run build
+RUN npm run build
 
 # Create a new stage for the production image
 FROM node:${NODE_VERSION}-slim
