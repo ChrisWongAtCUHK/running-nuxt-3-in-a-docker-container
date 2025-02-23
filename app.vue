@@ -1,15 +1,13 @@
 <template>
-  <div class="center">
-    <GoogleSignInButton @success="onSuccess" @error="onError" />
+  <div>
+    <ClientOnly>
+      <GoogleLogin :callback="callback" />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-// eslint-disable-next-line no-console
-const onSuccess = resp => console.log(resp)
-// eslint-disable-next-line no-console
-const onError = resp => console.error(resp)
+const callback = (response) => {
+  console.log(response);
+};
 </script>
-
-<style>
-</style>
